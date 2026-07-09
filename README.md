@@ -1,3 +1,16 @@
+> **💡 本 Fork 在保留原版全部功能基础上，新增 XMind Zen / 2020 / 2022 / 2026 全版本兼容。**  
+> 原版 [zhuifengshen/xmind2testcase](https://github.com/zhuifengshen/xmind2testcase) 仅兼容 XMind 8 Update 9（XML 格式），
+> 新版 XMind 采用 Zen 架构（JSON 格式），直接使用原版会解析失败。
+>
+> **主要改动（3 个文件）：**
+> - **utils.py** — 统一解析路径，xmindparser 自动识别新旧格式，修复多画布遗漏
+> - **parser.py** — 兼容新旧字段名差异，修复无图标节点崩溃
+> - **zentao.py** — 修复预期结果步骤号丢失，列名适配禅道导入
+>
+> **安装方式：**
+> 方式一：先安装原版 `pip install xmind2testcase`，再用本仓库的 3 个文件对应替换
+> 方式二：直接从 GitHub 安装 `pip install git+https://github.com/cloud202466/xmind2testcase.git`
+
 # XMind2TestCase
 
 > **XMind2TestCase** 工具，提供了一个高效测试用例设计的解决方案！

@@ -2,9 +2,9 @@
 # _*_ coding:utf-8 _*_
 import json
 import os
-import xmind
 import logging
 from xmind2testcase.parser import xmind_to_testsuites
+from xmindparser import xmind_to_dict, config as xmindparser_config
 
 
 def get_absolute_path(path):
@@ -21,12 +21,17 @@ def get_absolute_path(path):
     fp = os.path.abspath(os.path.expanduser(fp))
     return os.path.join(fp, fn)
 
-
 def get_xmind_testsuites(xmind_file):
-    """Load the XMind file and parse to `xmind2testcase.metadata.TestSuite` list"""
+    """Load the XMind file and parse to `xmind2testcase.metadata.TestSuite` list
+
+    使用 xmindparser 统一加载 XMind 文件，自动识别 XMind 8（XML格式）
+    和 XMind Zen/2020/2022/2024（JSON格式），xmindparser 内部已统一
+    使用 'makers' 字段名（而非旧版 xmind 库的 'markers'）。
+    """
     xmind_file = get_absolute_path(xmind_file)
-    workbook = xmind.load(xmind_file)
-    xmind_content_dict = workbook.getData()
+    # 确保所有字段都保留（不省略空值），兼容 parser.py 中的直接字段访问
+    xmindparser_config['hideEmptyValue'] = False
+    xmind_content_dict = xmind_to_dict(xmind_file)
     logging.debug("loading XMind file(%s) dict data: %s", xmind_file, xmind_content_dict)
 
     if xmind_content_dict:
@@ -96,7 +101,7 @@ def get_xmind_testcase_list(xmind_file):
                 case_data['product'] = product
                 case_data['suite'] = suite.name
                 testcases.append(case_data)
-
+    # print(f"get_xmind_testcase_list_testcases: {testcases}")
     logging.info('Convert XMind file(%s) to testcases dict data successfully!', xmind_file)
     return testcases
 
@@ -107,7 +112,6 @@ def xmind_testsuite_to_json_file(xmind_file):
     logging.info('Start converting XMind file(%s) to testsuites json file...', xmind_file)
     testsuites = get_xmind_testsuite_list(xmind_file)
     testsuite_json_file = xmind_file[:-6] + '_testsuite.json'
-
     if os.path.exists(testsuite_json_file):
         os.remove(testsuite_json_file)
         # logging.info('The testsuite json file already exists, return it directly: %s', testsuite_json_file)
