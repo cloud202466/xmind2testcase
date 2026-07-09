@@ -8,8 +8,8 @@
 > - **zentao.py** — 修复预期结果步骤号丢失，列名适配禅道导入
 >
 > **安装方式：**
-> 方式一：先安装原版 `pip install xmind2testcase`，再用本仓库的 3 个文件对应替换
-> 方式二：直接从 GitHub 安装 `pip install git+https://github.com/cloud202466/xmind2testcase.git`
+> - **方式一** — 先安装原版 `pip install xmind2testcase`，再用本仓库的 3 个文件对应替换
+> - **方式二** — 直接从 GitHub 安装 `pip install git+https://github.com/cloud202466/xmind2testcase.git`
 
 # XMind2TestCase
 
