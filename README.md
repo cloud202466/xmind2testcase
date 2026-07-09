@@ -12,7 +12,9 @@
 > - **方式二** — 直接从 GitHub 安装 `pip install git+https://github.com/cloud202466/xmind2testcase.git`
 > 
 ### 公众号
-扫码关注博主公众号，更多测试开发文章内容第一时间获取~
+
+扫码关注博主公众号，更多测试开发文章内容第一时间获取!
+
 ![logo](https://github.com/cloud202466/xmind2testcase/blob/master/webtool/static/logo/newlogo.png)
 
 # XMind2TestCase
