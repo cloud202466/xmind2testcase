@@ -10,6 +10,10 @@
 > **安装方式：**
 > - **方式一** — 先安装原版 `pip install xmind2testcase`，再用本仓库的 3 个文件对应替换
 > - **方式二** — 直接从 GitHub 安装 `pip install git+https://github.com/cloud202466/xmind2testcase.git`
+> 
+### 公众号
+扫码关注博主公众号，更多测试开发文章内容第一时间获取~
+![logo](https://github.com/cloud202466/xmind2testcase/blob/master/webtool/static/logo/logo.png)
 
 # XMind2TestCase
 
